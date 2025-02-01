@@ -1,6 +1,5 @@
 {
   "name": "yoruba_1k",
-  "leftToRight": true,
   "_comment": "https://1000mostcommonwords.com/1000-most-common-yoruba-words/",
   "words": [
     "bi",
@@ -80,7 +79,6 @@
     "ọkunrin",
     "ayipada",
     "lọ",
-    "ina",
     "Iru",
     "pa",
     "nilo",
@@ -584,7 +582,6 @@
     "Atomu",
     "eda",
     "ipa",
-    "ina",
     "reti",
     "egungun",
     "iṣinipopada",
@@ -734,6 +731,7 @@
     "imu",
     "ibinu",
     "Beere",
-    "Afirika"
+    "Afirika",
+    "ina"
   ]
 }

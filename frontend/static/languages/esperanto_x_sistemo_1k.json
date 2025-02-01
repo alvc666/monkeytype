@@ -1,6 +1,5 @@
 {
   "name": "esperanto_x_sistemo_1k",
-  "leftToRight": true,
   "noLazyMode": true,
   "words": [
     "la",
@@ -9,7 +8,6 @@
     "ne",
     "estas",
     "kaj",
-    "cxu",
     "de",
     "al",
     "ni",
@@ -944,7 +942,6 @@
     "portis",
     "pagos",
     "serioze",
-    "cxu",
     "minutojn",
     "gxigxi",
     "havu",
@@ -1002,6 +999,7 @@
     "muso",
     "junulo",
     "sercxu",
-    "sxangxigxis"
+    "sxangxigxis",
+    "cxu"
   ]
 }

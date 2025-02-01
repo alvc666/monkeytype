@@ -1,6 +1,5 @@
 {
   "name": "maori_1k",
-  "leftToRight": true,
   "_comment": "Sourced from: https://tereomaori.tki.org.nz/Teacher-tools/Te-Whakaipurangi-Rauemi/High-frequency-word-lists",
   "words": [
     "te",
@@ -90,7 +89,6 @@
     "ao",
     "taua",
     "māmā",
-    "kāinga",
     "manu",
     "whai",
     "rākau",
@@ -189,7 +187,6 @@
     "take",
     "tāne",
     "hea",
-    "nāianei",
     "hou",
     "ehara",
     "tinana",
@@ -399,7 +396,6 @@
     "māhanga",
     "ngaru",
     "poto",
-    "nāianei",
     "manawa",
     "ture",
     "matau",
@@ -461,11 +457,9 @@
     "pōro",
     "rapu",
     "wānanga",
-    "kāinga",
     "ngutu",
     "hinengaro",
     "whitu",
-    "hā",
     "kaumātua",
     "māu",
     "moutere",
@@ -727,7 +721,6 @@
     "tukutuku",
     "whakamua",
     "whakarunga",
-    "hā",
     "harikoa",
     "ipu",
     "irirangi",
@@ -980,6 +973,9 @@
     "aorangi",
     "hāwhe",
     "huritau",
-    "kamo"
+    "kamo",
+    "nāianei",
+    "kāinga",
+    "hā"
   ]
 }

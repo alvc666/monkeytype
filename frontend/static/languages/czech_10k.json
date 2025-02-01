@@ -1,6 +1,5 @@
 {
   "name": "czech_10k",
-  "leftToRight": true,
   "bcp47": "cs-CZ",
   "words": [
     "být",
@@ -2565,7 +2564,6 @@
     "usilovat",
     "člun",
     "snižovat",
-    "Slovensko",
     "kouč",
     "věrný",
     "Česko",
@@ -2901,7 +2899,6 @@
     "úcta",
     "jeskyně",
     "nábytek",
-    "Polsko",
     "zlobit",
     "důl",
     "podání",
@@ -3859,7 +3856,6 @@
     "nápadně",
     "nejistota",
     "mýlit",
-    "Slovensko",
     "udělit",
     "výzkumný",
     "koření",
@@ -4301,7 +4297,6 @@
     "pódium",
     "semeno",
     "vzdělaný",
-    "tý",
     "vyrůstat",
     "poděkovat",
     "sklonit",
@@ -5644,7 +5639,6 @@
     "řasa",
     "elektronika",
     "květináč",
-    "Polsko",
     "dalekohled",
     "datový",
     "rezervace",
@@ -9634,6 +9628,8 @@
     "klasika",
     "liberál",
     "kalendářní",
-    "odolávat"
+    "odolávat",
+    "Slovensko",
+    "Polsko"
   ]
 }

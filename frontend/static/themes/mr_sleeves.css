@@ -3,6 +3,7 @@
   --main-color: #daa99b;
   --caret-color: #8fadc9;
   --sub-color: #9a9fa1;
+  --sub-alt-color: #bfcbd1;
   --text-color: #1d1d1d;
   --error-color: #bf6464;
   --error-extra-color: #793e44;
@@ -10,27 +11,27 @@
   --colorful-error-extra-color: #667c91;
 }
 
-#top .logo .bottom {
+header #logo .bottom {
   color: #8fadc9;
 }
 
-#top .config .group .buttons .text-button.active {
+header .config .group .buttons .textButton.active {
   color: #daa99b;
 }
 
-/* #menu .icon-button:nth-child(1){
+/* nav .textButton:nth-child(1){
     color: #daa99b;
 }
 
-#menu .icon-button:nth-child(2){
+nav .textButton:nth-child(2){
     color: #daa99b;
 }
 
-#menu .icon-button:nth-child(3){
+nav .textButton:nth-child(3){
     color: #8fadc9;
 }
 
-#menu .icon-button:nth-child(4),
-#menu .icon-button:nth-child(5){
+nav .textButton:nth-child(4),
+nav .textButton:nth-child(5){
     color: #8fadc9;
 } */

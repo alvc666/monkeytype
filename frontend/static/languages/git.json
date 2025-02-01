@@ -1,6 +1,5 @@
 {
   "name": "git",
-  "leftToRight": true,
   "noLazyMode": true,
   "words": [
     "git",
@@ -20,7 +19,6 @@
     "rebase",
     "reflog",
     "remote",
-    "reset",
     "revert",
     "status",
     "diff",
@@ -51,6 +49,10 @@
     "archive",
     "bundle",
     "build",
-    "cherrypick"
+    "cherrypick",
+    "@",
+    "-f",
+    "--force-if-includes",
+    "--force-with-lease"
   ]
 }

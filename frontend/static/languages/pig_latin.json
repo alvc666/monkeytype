@@ -1,6 +1,5 @@
 {
   "name": "pig_latin",
-  "leftToRight": true,
   "noLazyMode": true,
   "words": [
     "ethay",
@@ -38,13 +37,11 @@
     "illway",
     "erethay",
     "aysay",
-    "owhay",
     "akemay",
     "enwhay",
     "ancay",
     "oremay",
     "ifay",
-    "onay",
     "anmay",
     "outay",
     "otheray",
@@ -101,7 +98,6 @@
     "ellway",
     "eoplepay",
     "ownday",
-    "ownay",
     "ustjay",
     "ecausebay",
     "oodgay",

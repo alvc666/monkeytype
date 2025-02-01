@@ -3,6 +3,7 @@
   --main-color: #91170c;
   --caret-color: #c58940;
   --sub-color: #847869;
+  --sub-alt-color: #272727;
   --text-color: #fae1c3;
   --error-color: #bb1e10;
   --error-extra-color: #791717;
@@ -10,6 +11,6 @@
   --colorful-error-extra-color: #849224;
 }
 
-#top .logo .bottom {
+header #logo .bottom {
   color: #fae1c3;
 }

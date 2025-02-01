@@ -1,6 +1,5 @@
 {
   "name": "swedish",
-  "leftToRight": true,
   "bcp47": "sv-SE",
   "words": [
     "jag",
@@ -118,7 +117,6 @@
     "mina",
     "ner",
     "åt",
-    "fan",
     "väl",
     "vänta",
     "också",

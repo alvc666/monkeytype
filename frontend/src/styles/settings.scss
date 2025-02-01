@@ -1,29 +1,45 @@
 .pageSettings {
-  display: grid;
-  // grid-template-columns: 1fr 1fr;
   gap: 2rem;
+
+  .accountSettingsNotice {
+    background: var(--bg-color);
+    border-radius: var(--roundness);
+    box-shadow: 0 0 0 0.2rem var(--sub-alt-color);
+    // background: color-mix(in srgb, var(--sub-alt-color) 50%, transparent);
+    // background: var(--sub-alt-color);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    .icon {
+      font-size: 2rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+      color: var(--sub-color);
+    }
+    button {
+      padding: 1rem;
+    }
+  }
 
   .tip {
     color: var(--sub-color);
+    text-align: center;
   }
 
   .sectionGroupTitle {
     font-size: 2rem;
-    color: var(--sub-color);
-    line-height: 2rem;
-    cursor: pointer;
-    transition: 0.25s;
-
-    &:hover {
-      color: var(--text-color);
-    }
+    width: max-content;
+    margin: -0.25em;
+    padding: 0.25em;
 
     .fas {
-      margin-left: 0.5rem;
+      transition: transform 0.25s;
+    }
 
-      &.rotate {
-        transform: rotate(-90deg);
-      }
+    &.rotateIcon .fas {
+      transform: rotate(-90deg);
     }
   }
 
@@ -35,17 +51,12 @@
     display: grid;
     gap: 2rem;
     &.quickNav .links {
-      display: grid;
-      grid-auto-flow: column;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
       text-align: center;
       a {
-        text-decoration: none;
-        width: 100%;
-        cursor: pointer;
-        // opacity: 0.5;
-        &:hover {
-          opacity: 1;
-        }
+        flex-grow: 1;
       }
     }
   }
@@ -54,38 +65,40 @@
     display: grid;
     // gap: .5rem;
     grid-template-areas:
-      "title title"
+      "title buttons"
       "text buttons";
     grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto 1fr;
     column-gap: 2rem;
+    row-gap: 0.5rem;
     align-items: center;
-
-    .button.danger {
-      box-shadow: 0px 0px 0px 2px var(--error-color);
-      color: var(--text-color);
-      &:hover {
-        background: var(--text-color);
-        color: var(--bg-color);
-      }
-    }
 
     .inputAndButton {
       display: grid;
-      grid-template-columns: 8fr 1fr;
+      grid-template-columns: auto min-content;
       gap: 0.5rem;
       margin-bottom: 0.5rem;
 
+      span {
+        display: flex;
+        gap: 0.5rem;
+      }
       .button {
         height: auto;
 
         .fas {
           margin-right: 0rem;
-          vertical-align: sub;
         }
       }
     }
 
-    &.autoSwitchThemeInputs {
+    .rangeGroup {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+    }
+
+    &[data-config-name="autoSwitchThemeInputs"] {
       grid-template-areas: unset;
       grid-template-columns: 1fr 3fr 1fr 3fr;
       gap: 2rem;
@@ -103,7 +116,7 @@
       }
     }
 
-    &.customBackgroundFilter {
+    &[data-config-name="customBackgroundFilter"] {
       .groups {
         grid-area: buttons;
         display: grid;
@@ -138,11 +151,28 @@
     }
 
     & .customThemeEdit {
-      grid-row: 3;
+      // grid-row: 3;
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr 1fr;
-      justify-items: stretch;
-      gap: 0.5rem 1rem;
+      gap: 1rem;
+      // grid-template-columns: 1fr 1fr 1fr 1fr;
+      // justify-items: stretch;
+      // gap: 0.5rem 1rem;
+
+      .customThemeInputs {
+        display: grid;
+        grid-template-columns: 1fr 1.5fr 1fr 1.5fr;
+        gap: 1rem;
+      }
+
+      .customThemeButtons {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .inputAndButton {
+        grid-template-columns: 1fr auto;
+      }
 
       input {
         width: 100%;
@@ -153,23 +183,40 @@
         place-content: center start;
       }
 
-      & p {
-        grid-area: unset;
-        grid-column: 1 / span 4;
+      & .spacer {
+        grid-column: span 4;
       }
 
-      & .spacer {
-        grid-column: 3 / 5;
+      & .buttons {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-column: 1/5;
+        gap: 0.5rem;
       }
     }
 
-    h1 {
+    .groupTitle {
       font-size: 1rem;
-      line-height: 1rem;
       color: var(--sub-color);
       margin: 0;
       grid-area: title;
       font-weight: 300;
+      display: flex;
+      align-items: baseline;
+      .fab,
+      .fas,
+      .far,
+      .textIcon {
+        margin-right: 0.5em;
+      }
+    }
+
+    &.themes .groupTitle {
+      .fab,
+      .fas,
+      .far {
+        margin-bottom: 0;
+      }
     }
 
     p {
@@ -182,12 +229,19 @@
       align-self: normal;
       color: var(--text-color);
       grid-area: text;
+      .red {
+        line-height: 2rem;
+        color: var(--error-color);
+      }
+    }
+
+    .inputs {
+      grid-area: buttons;
     }
 
     .buttons {
       display: grid;
-      grid-auto-flow: column;
-      grid-auto-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr));
       gap: 0.5rem;
       grid-area: buttons;
       &.vertical {
@@ -195,25 +249,9 @@
       }
     }
 
-    &.discordIntegration {
-      .info {
-        grid-area: buttons;
-        text-align: center;
-        color: var(--main-color);
-      }
-
-      #unlinkDiscordButton {
-        margin-top: 0.5rem;
-        font-size: 0.75rem;
-        color: var(--sub-color);
-        &:hover {
-          color: var(--text-color);
-        }
-      }
-
-      .howto {
-        margin-top: 1rem;
-        color: var(--text-color);
+    &[data-config-name="paceCaret"] {
+      .buttons {
+        grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
       }
     }
 
@@ -223,37 +261,8 @@
       }
 
       .tag {
-        grid-template-columns: 6fr 1fr 1fr 1fr;
+        grid-template-columns: auto min-content min-content min-content;
         margin-bottom: 0.5rem;
-      }
-
-      .addTagButton {
-        margin-top: 0.5rem;
-        color: var(--text-color);
-        cursor: pointer;
-        transition: 0.25s;
-        padding: 0.2rem 0.5rem;
-        border-radius: var(--roundness);
-
-        background: rgba(0, 0, 0, 0.1);
-        text-align: center;
-        -webkit-user-select: none;
-        display: grid;
-        align-content: center;
-        height: min-content;
-        height: -moz-min-content;
-
-        &.active {
-          background: var(--main-color);
-          color: var(--bg-color);
-        }
-
-        &:hover,
-        &:focus {
-          color: var(--bg-color);
-          background: var(--text-color);
-          outline: none;
-        }
       }
     }
 
@@ -263,42 +272,9 @@
       }
 
       .preset {
-        grid-template-columns: 7fr 1fr 1fr;
+        grid-template-columns: auto min-content min-content;
         margin-bottom: 0.5rem;
       }
-
-      .addPresetButton {
-        margin-top: 0.5rem;
-        color: var(--text-color);
-        cursor: pointer;
-        transition: 0.25s;
-        padding: 0.2rem 0.5rem;
-        border-radius: var(--roundness);
-
-        background: rgba(0, 0, 0, 0.1);
-        text-align: center;
-        -webkit-user-select: none;
-        display: grid;
-        align-content: center;
-        height: min-content;
-        height: -moz-min-content;
-
-        &.active {
-          background: var(--main-color);
-          color: var(--bg-color);
-        }
-
-        &:hover,
-        &:focus {
-          color: var(--bg-color);
-          background: var(--text-color);
-          outline: none;
-        }
-      }
-    }
-
-    &.fontSize .buttons {
-      grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
     &.themes {
@@ -371,6 +347,9 @@
             opacity: 1;
           }
         }
+        .delButton {
+          justify-self: end;
+        }
         &:hover {
           transform: scale(1.1);
           .editButton {
@@ -387,7 +366,7 @@
       .customTheme.button,
       .theme.button {
         display: grid;
-        grid-template-columns: auto 1fr auto;
+        grid-template-columns: 1fr auto 1fr;
         .text {
           color: inherit;
         }
@@ -406,6 +385,11 @@
           }
         }
         &.active {
+          box-shadow: 0 0 0 0.2em var(--main-color);
+          transform: scale(1.1);
+          .themeBubbles {
+            opacity: 1;
+          }
           .activeIndicator {
             opacity: 1;
           }
@@ -434,9 +418,33 @@
         margin-left: 0;
         grid-auto-flow: dense;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr)) !important;
         gap: 0.5rem;
-        margin-top: 0.5rem;
+        .button {
+          transition: transform 0.125s;
+          &:hover .themeBubbles {
+            opacity: 1;
+          }
+          .themeBubbles {
+            transition: 0.125s;
+            opacity: 0;
+            display: grid;
+            grid-auto-flow: column;
+            gap: 0.5em;
+            border-radius: 1.25em;
+            height: 1em;
+            margin-top: 0.125em;
+            width: max-content;
+            justify-self: end;
+            // background: var(--bg-color);
+            // outline: 0.25rem solid var(--bg-color);
+            .themeBubble {
+              width: 1em;
+              height: 1em;
+              border-radius: 100%;
+            }
+          }
+        }
       }
     }
 
@@ -451,16 +459,22 @@
 
       .buttons {
         margin-left: 0;
-        grid-auto-flow: dense;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
         gap: 0.5rem;
-        margin-top: 1rem;
       }
     }
 
-    &.randomTheme .buttons {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    &.passwordAuthSettings {
+      .buttons {
+        grid-template-rows: repeat(auto-fill, 1fr);
+        grid-template-columns: repeat(2, minmax(4.5rem, 1fr));
+
+        #removePasswordAuth,
+        #addPasswordAuth {
+          grid-column: span 2;
+        }
+      }
     }
   }
 }

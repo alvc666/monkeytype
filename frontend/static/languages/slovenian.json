@@ -1,6 +1,6 @@
 {
   "name": "slovenian",
-  "leftToRight": true,
+  "bcp47": "sl-SI",
   "words": [
     "hitro",
     "potem",

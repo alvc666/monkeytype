@@ -3,6 +3,7 @@
   --main-color: #2d2076;
   --caret-color: #fbdb8c;
   --sub-color: #385eca;
+  --sub-alt-color: #c8cedf;
   --text-color: #2d2076;
   --error-color: #f2ce83;
   --error-extra-color: #f2ce83;
@@ -10,15 +11,15 @@
   --colorful-error-extra-color: #f2ce83;
 }
 
-#menu .icon-button {
+nav > .textButton {
   color: #f2ce83;
 }
 
-#menu .icon-button:hover {
+nav > .textButton:hover {
   color: #c6915e;
 }
 
-#top .logo .text {
+header #logo .text {
   background-color: #ffffff; /* fallback */
   background: -webkit-linear-gradient(
     #2d2076,
@@ -35,7 +36,7 @@
   -webkit-text-fill-color: transparent;
 }
 
-#top .logo .text .top {
+header #logo .text .top {
   /* prevent it from being transparent */
   -webkit-text-fill-color: #385eca;
 }

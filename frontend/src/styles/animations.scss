@@ -66,15 +66,48 @@
 
 @keyframes flashHighlight {
   0% {
-    background-color: var(--bg-color);
+    background-color: var(--bg-color) !important;
   }
   10% {
-    background-color: var(--main-color);
+    background-color: var(--main-color) !important;
   }
   40% {
-    background-color: var(--main-color);
+    background-color: var(--main-color) !important;
   }
   100% {
-    background-color: var(--bg-color);
+    background-color: var(--bg-color) !important;
+  }
+}
+
+@keyframes rgb-bg {
+  0% {
+    background: hsl(120, 39%, 49%);
+  }
+  20% {
+    background: hsl(192, 48%, 48%);
+  }
+  40% {
+    background: hsl(264, 90%, 58%);
+  }
+  60% {
+    background: hsl(357, 89%, 50%);
+  }
+  80% {
+    background: hsl(46, 100%, 51%);
+  }
+  100% {
+    background: hsl(120, 39%, 49%);
+  }
+}
+
+@keyframes scanline {
+  0% {
+    bottom: 100%;
+  }
+  80% {
+    bottom: 100%;
+  }
+  100% {
+    bottom: 0%;
   }
 }

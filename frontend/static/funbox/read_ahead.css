@@ -1,4 +1,5 @@
-#words .word.active:nth-of-type(n + 2),
-#words .word.active:nth-of-type(n + 2) + .word {
-  color: transparent;
+#words:not(.read_ahead_disabled) .word.active:nth-of-type(n + 2),
+#words:not(.read_ahead_disabled) .word.active:nth-of-type(n + 2) + .word {
+  --untyped-letter-color: transparent;
+  --untyped-letter-animation: none;
 }

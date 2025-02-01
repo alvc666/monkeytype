@@ -3,6 +3,7 @@
   --main-color: #eee;
   --caret-color: #eee;
   --sub-color: #444;
+  --sub-alt-color: #171717;
   --text-color: #eee;
   --error-color: #fff;
   --error-extra-color: #d8d8d8;
@@ -10,11 +11,11 @@
   --colorful-error-extra-color: #d8d8d8;
 }
 
-#top .logo .icon {
+header #logo .icon {
   color: #8c3230;
 }
 
-#top .logo .text {
+header #logo .text {
   color: #557d8d;
 }
 
@@ -34,19 +35,25 @@
 }
 
 #liveWpm,
-#timerNumber {
+#liveStatsTextTop {
   color: white;
 }
 
-#top .config .group .buttons .text-button.active,
+header .config .group .buttons .textButton.active,
 #result .stats .group,
-#menu .icon-button:hover,
-#top .config .group .buttons .text-button:hover,
-a:hover {
+nav .textButton:hover,
+nav button.text:hover,
+header .config .group .buttons .textButton:hover,
+a:not(.button):hover {
   animation: shadow-repeat 3s linear infinite forwards;
 }
 
 #logo,
-#typingTest .word letter.correct {
+#typingTest .word letter.correct,
+#typingTest #words.highlight-word .word.typed letter.correct,
+#typingTest #words.highlight-next-word .word.typed letter.correct,
+#typingTest #words.highlight-next-two-words .word.typed letter.correct,
+#typingTest #words.highlight-next-three-words .word.typed letter.correct {
+  color: var(--correct-letter-color);
   animation: shadow 5s linear 1 forwards;
 }

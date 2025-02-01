@@ -1,6 +1,5 @@
 {
   "name": "code_kotlin",
-  "leftToRight": true,
   "words": [
     "as",
     "as?",
@@ -10,7 +9,6 @@
     "do",
     "else",
     "false",
-    "true",
     "for",
     "fun",
     "if",

@@ -3,6 +3,7 @@
   --main-color: #b31313;
   --caret-color: #b31313;
   --sub-color: #683434;
+  --sub-alt-color: #200a0a;
   --text-color: #ffffff;
   --error-color: #2f3cb6;
   --error-extra-color: #434a8f;
@@ -10,7 +11,7 @@
   --colorful-error-extra-color: #434a8f;
 }
 
-@keyframes rgb {
+@keyframes fire {
   0% {
     color: #b31313;
   }
@@ -28,7 +29,7 @@
   }
 }
 
-@keyframes rgb-bg {
+@keyframes fire-bg {
   0% {
     background: #b31313;
   }
@@ -51,28 +52,47 @@
 .pageSettings .section .buttons .button.active,
 .pageSettings .section.languages .buttons .language.active,
 .pageAccount .group.filterButtons .buttons .button.active {
-  animation: rgb-bg 5s linear infinite;
+  animation: fire-bg 5s linear infinite;
 }
 
-#top.focus .button.discord::after,
-#top .button.discord.dotHidden::after {
+header.focus .button.discord::after,
+header .button.discord.dotHidden::after {
   animation-name: none !important;
 }
 
-.logo .bottom,
-#top .config .group .buttons .text-button.active,
+#logo .bottom,
+header .config .group .buttons .textButton.active,
 #result .stats .group .bottom,
-#menu .icon-button:hover,
-#top .config .group .buttons .text-button:hover,
-a:hover,
-#words.flipped .word {
-  animation: rgb 5s linear infinite;
+nav .textButton:hover,
+nav button.text:hover,
+header .config .group .buttons .textButton:hover,
+a:not(.button):hover {
+  animation: fire 5s linear infinite;
 }
 
-#words.flipped .word letter.correct {
-  color: var(--sub-color);
+#words {
+  --correct-letter-animation: fire 5s linear infinite;
 }
 
-#words:not(.flipped) .word letter.correct {
-  animation: rgb 5s linear infinite;
+#words.flipped {
+  --untyped-letter-color: var(--sub-color);
+  --correct-letter-animation: none;
+  --untyped-letter-animation: fire 5s linear infinite;
+}
+
+#words .word.typed letter.correct,
+#words.highlight-word .word.typed letter,
+#words.highlight-next-word .word.typed letter,
+#words.highlight-next-two-words .word.typed letter,
+#words.highlight-next-three-words .word.typed letter {
+  animation: fire 5s linear infinite;
+}
+
+#words.flipped .word.typed letter {
+  animation: none;
+}
+
+#words.highlight-off .word letter,
+#words.highlight-off .word.typed letter {
+  animation: fire 5s linear infinite;
 }
