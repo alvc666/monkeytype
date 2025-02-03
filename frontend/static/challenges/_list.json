@@ -85,14 +85,14 @@
     "display": "True Simp",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["miodec",true,10000]
+    "parameters": ["miodec", "repeat", 10000, "word", false]
   }
   ,{
     "name": "bigramSalad",
     "display": "Bigram Salad",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["to of in it is as at be we he so on an or do if up by my go",true,100],
+    "parameters": ["to of in it is as at be we he so on an or do if up by my go", "random", 100, "word", false],
     "requirements" : {
       "wpm": {
         "min": 100
@@ -104,17 +104,17 @@
     "display": "Simp",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["miodec",true,1000]
+    "parameters": ["miodec", "repeat", 1000, "word", false]
   }
   ,{
     "name": "antidiseWhat",
     "display": "Antidise-what?",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["antidisestablishmentarianism",true,1],
+    "parameters": ["antidisestablishmentarianism","repeat",1,"word",false],
     "requirements" : {
       "wpm": {
-        "min": 100
+        "min": 200
       }
     }
   }
@@ -123,14 +123,14 @@
     "display": "What's this website called again?",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["monkeytype",true,1000]
+    "parameters": ["monkeytype","repeat",1000, "word", false]
   }
   ,{
     "name": "developd",
     "display": "Develop'd",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["develop",true,1000]
+    "parameters": ["develop","repeat",1000,"word",false]
   }
   ,{
     "name": "slowAndSteady",
@@ -153,7 +153,7 @@
     "display": "Speed Spacer",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["a b c d e f g h i j k l m n o p q r s t u v w x y z",true,100],
+    "parameters": ["a b c d e f g h i j k l m n o p q r s t u v w x y z","random",100,"word",false],
     "requirements" : {
       "wpm": {
         "min": 100
@@ -165,7 +165,7 @@
     "display": "I've got the POWER",
     "autoRole": true,
     "type": "customText",
-    "parameters": ["power",true,10],
+    "parameters": ["power","repeat",10,"word",false],
     "requirements" : {
       "wpm": {
         "min": 400
@@ -175,9 +175,18 @@
   ,{
     "name": "accuracy",
     "display": "Accuracy",
+    "autoRole": false,
     "type": "accuracy",
     "parameters": [],
-    "message": "Minimum 60wpm and 100% accuracy required."
+    "message": "Minimum 60wpm and 100% accuracy required.",
+    "requirements" : {
+      "wpm": {
+        "min": 60
+      },
+      "accuracy": {
+        "min": 100
+      }
+    }
   }
   ,{
     "name": "accuracyExpert",
@@ -185,6 +194,7 @@
     "autoRole": true,
     "type": "accuracy",
     "parameters": [],
+    "message": "Minimum 60wpm and 100% accuracy required.",
     "requirements" : {
       "wpm": {
         "min": 60
@@ -206,6 +216,7 @@
     "autoRole": true,
     "type": "accuracy",
     "parameters": [],
+    "message": "Minimum 60wpm and 100% accuracy required.",
     "requirements" : {
       "wpm": {
         "min": 60
@@ -227,6 +238,7 @@
     "autoRole": true,
     "type": "accuracy",
     "parameters": [],
+    "message": "Minimum 60wpm and 100% accuracy required.",
     "requirements" : {
       "wpm": {
         "min": 60
@@ -246,19 +258,52 @@
     "name": "inAGalaxyFarFarAway",
     "display": "In a galaxy far far away",
     "type": "script",
-    "parameters": ["episode4.txt",null,"space_balls"]
+    "parameters": ["episode4.txt",null,"space_balls"],
+    "requirements": {
+      "config": {
+        "tapeMode": "off"
+      }
+    }
+  }
+  ,{
+    "name": "beepBoop",
+    "display": "Beep Boop",
+    "type": "script",
+    "parameters": ["beepboop.txt",null,"nospace"],
+    "message": "Mininum 45 WPM and 100% accuracy required.",
+    "requirements": {
+      "wpm": {
+        "min": 45
+      },
+      "acc": {
+        "min": 100
+      },
+      "funbox": {
+        "exact": "nospace"
+      }
+    }
   }
   ,{
     "name": "whosYourDaddy",
     "display": "Who's your daddy?",
     "type": "script",
-    "parameters": ["episode5.txt",null,"space_balls"]
+    "parameters": ["episode5.txt",null,"space_balls"],
+    "requirements": {
+      "config": {
+        "tapeMode": "off"
+      }
+    }
   }
   ,{
     "name": "itsATrap",
     "display": "It's a trap!",
     "type": "script",
-    "parameters": ["episode6.txt",null,"space_balls"]
+    "parameters": ["episode6.txt",null,"space_balls"],
+    "requirements": {
+      "config": {
+        "tapeMode": "off"
+      }
+    }
   }
   ,{
     "name": "jolly",
@@ -344,6 +389,13 @@
     "parameters": ["shrek.txt",null,null]
   }
   ,{
+    "name": "lookAtMeIAmTheDeveloperNow",
+    "display": "Look at me. I am the developer now.",
+    "autoRole": true,
+    "type": "script",
+    "parameters": ["sourcecode.txt",null,null]
+  }
+  ,{
     "name": "beLikeWater",
     "display": "Be like water",
     "type": "funbox",
@@ -399,7 +451,12 @@
     "name": "mnemonist",
     "display": "Mnemonist",
     "type": "funbox",
-    "parameters": ["memory","words",25,"master"]
+    "parameters": ["memory","words",25,"master"],
+    "requirements": {
+      "config": {
+        "tapeMode": "off"
+      }
+    }
   }
   ,{
     "name": "earfquake",
@@ -461,6 +518,9 @@
       },
       "funbox": {
         "exact": "read_ahead"
+      },
+      "config": {
+        "tapeMode": "off"
       }
     }
   }
@@ -479,6 +539,9 @@
       },
       "funbox": {
         "exact": "read_ahead_hard"
+      },
+      "config": {
+        "tapeMode": "off"
       }
     }
   }

@@ -1,6 +1,5 @@
 {
   "name": "indonesian_1k",
-  "leftToRight": true,
   "noLazyMode": true,
   "bcp47": "hu-HU",
   "words": [
@@ -11,6 +10,7 @@
     "ada",
     "adalah",
     "adanya",
+    "admin",
     "administrasi",
     "aduk",
     "agama",

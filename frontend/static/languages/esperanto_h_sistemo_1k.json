@@ -1,6 +1,5 @@
 {
   "name": "esperanto_h_sistemo_1k",
-  "leftToRight": true,
   "noLazyMode": true,
   "words": [
     "la",
@@ -9,7 +8,6 @@
     "ne",
     "estas",
     "kaj",
-    "chu",
     "de",
     "al",
     "ni",
@@ -525,7 +523,6 @@
     "felicha",
     "estro",
     "trankvile",
-    "chu",
     "eliru",
     "kelkajn",
     "stultulo",
@@ -1002,6 +999,7 @@
     "muso",
     "junulo",
     "serchu",
-    "shanghighis"
+    "shanghighis",
+    "chu"
   ]
 }

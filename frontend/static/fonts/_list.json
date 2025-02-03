@@ -34,7 +34,8 @@
   },
   {
     "name": "Comic Sans MS",
-    "display": "Helvetica"
+    "display": "Helvetica",
+    "systemFont": true
   },
   {
     "name": "Oxygen"
@@ -46,7 +47,8 @@
     "name": "Itim"
   },
   {
-    "name": "Courier"
+    "name": "Courier",
+    "systemFont": true
   },
   {
     "name": "Comfortaa"
@@ -62,5 +64,43 @@
   },
   {
     "name": "Lalezar"
+  },
+  {
+    "name": "Boon",
+    "display": "Boon (ไทย)"
+  },
+  {
+    "name": "Open Dyslexic"
+  },
+  {
+    "name": "Ubuntu"
+  },
+  {
+    "name": "Ubuntu Mono"
+  },
+  {
+    "name": "Georgia",
+    "systemFont": true
+  },
+  {
+    "name": "Cascadia Mono"
+  },
+  {
+    "name": "IBM Plex Mono"
+  },
+  {
+    "name": "Overpass Mono"
+  },
+  {
+    "name": "Hack"
+  },
+  {
+    "name": "CommitMono"
+  },
+  {
+    "name": "Mononoki"
+  },
+  {
+    "name": "Parkinsans"
   }
 ]

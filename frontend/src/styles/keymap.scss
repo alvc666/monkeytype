@@ -1,4 +1,5 @@
 #keymap {
+  font-size: 1rem;
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   justify-content: center;
@@ -6,6 +7,7 @@
   // height: 140px;
   gap: 0.25rem;
   margin-top: 1rem;
+  -webkit-user-select: none;
   user-select: none;
 
   .row {
@@ -13,13 +15,13 @@
     gap: 0.25rem;
   }
 
-  .keymap-key {
+  .keymapKey {
     display: flex;
-    background-color: transparent;
+    background-color: var(--sub-alt-color);
     color: var(--sub-color);
     border-radius: var(--roundness);
-    border: 0.05rem solid;
-    border-color: var(--sub-color);
+    // border: 0.05rem solid;
+    // border-color: var(--sub-color);
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -28,16 +30,16 @@
     position: relative;
 
     .bump {
-      width: 0.75rem;
-      height: 0.05rem;
-      background: var(--sub-color);
+      width: 0.5em;
+      height: 0.1em;
+      background: var(--bg-color);
       position: absolute;
-      border-radius: var(--roundness);
+      border-radius: 0.1em;
       // margin-top: 1.5rem;
-      bottom: 0.15rem;
+      bottom: 0.2em;
     }
 
-    &.active-key {
+    &.activeKey {
       color: var(--bg-color);
       background-color: var(--main-color);
       border-color: var(--main-color);
@@ -47,7 +49,7 @@
       }
     }
 
-    &.key-space {
+    &.layoutIndicator {
       width: 100%;
       &:hover {
         cursor: pointer;
@@ -55,7 +57,7 @@
       }
     }
 
-    &.key-split-space {
+    &.keySpace.right {
       width: 100%;
       opacity: 0;
     }
@@ -65,20 +67,20 @@
     }
   }
 
-  .hidden-key,
-  .hide-key {
+  .hiddenKey,
+  .hideKey {
     opacity: 0;
   }
 
-  .keymap-split-spacer,
-  .keymap-stagger-split-spacer,
-  .keymap-matrix-split-spacer {
+  .keymapSplitSpacer,
+  .keymapStaggerSplitSpacer,
+  .keymapMatrixSplitSpacer {
     display: none;
   }
 
   .r1 {
     display: grid;
-    grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 0fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 
   .r2 {
@@ -99,7 +101,7 @@
   .r5 {
     display: grid;
     grid-template-columns: 3.5fr 6fr 3.5fr;
-    font-size: 0.5rem;
+    font-size: 1rem;
     // &.matrixSpace {
     //   // grid-template-columns: 6.75fr 1.9fr 6.75fr;
     //   grid-template-columns: 6.9fr 4.6fr 6.9fr; // wider spacebar
@@ -108,39 +110,54 @@
     //   // grid-template-columns: 6.75fr 1.9fr 6.75fr;
     //   grid-template-columns: 4fr 7.5fr 4fr;
     // }
+    .keySpace {
+      // since we can potentially have alphas in r5,
+      // we keep font-size: 1rem; for alphas to look the same as other rows,
+      // but reduce it again to 0.5rem for space, so layout name fits.
+      font-size: 0.5rem;
+    }
+
+    &[data-row5-has-alpha="true"] {
+      // space-alpha
+      &[data-row5-grid="3-1"] {
+        grid-template-columns: 4fr 4fr 1fr 4fr;
+      }
+
+      // alpha-space
+      &[data-row5-grid="1-3"] {
+        grid-template-columns: 4fr 1fr 4fr 4fr;
+      }
+    }
   }
   &.matrix {
     .r1,
     .r2,
-    .r3 {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
+    .r3,
     .r4 {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
     .r5 {
-      grid-template-columns: 3fr 4fr 3fr;
-    }
+      grid-template-columns: 1fr 3fr 4fr 3fr 1fr;
 
-    .r1,
-    .r2,
-    .r3 {
-      :nth-child(13) {
-        opacity: 0;
-      }
+      &[data-row5-has-alpha="true"] {
+        // space-alpha
+        &[data-row5-grid="3-1"] {
+          grid-template-columns: 1fr 2fr 3fr 1fr 5fr;
+        }
 
-      :nth-child(14) {
-        opacity: 0;
+        // alpha-space
+        &[data-row5-grid="1-3"] {
+          grid-template-columns: 2fr 3fr 1fr 3fr 3fr;
+        }
       }
     }
   }
   &.split {
-    .keymap-split-spacer {
+    .keymapSplitSpacer {
       display: block;
     }
-    .keymap-stagger-split-spacer {
+    .keymapStaggerSplitSpacer {
       display: block;
     }
 
@@ -165,133 +182,175 @@
     }
     .r5 {
       grid-template-columns: 5fr 3fr 1fr 3fr 4.5fr;
+
+      &[data-row5-has-alpha="true"] {
+        // space-alpha
+        &[data-row5-grid="3-1"] {
+          grid-template-columns: 5fr 3fr 1fr 1fr 6.5fr;
+        }
+
+        // alpha-space
+        &[data-row5-grid="1-3"] {
+          grid-template-columns: 7fr 1fr 1fr 3fr 4.5fr;
+        }
+      }
     }
-    .key-split-space {
+    .keySpace.right {
       opacity: 1;
     }
   }
   &.split_matrix {
-    .keymap-split-spacer {
+    .keymapSplitSpacer {
       display: block;
       width: 2rem;
       height: 2rem;
     }
-    .keymap-stagger-split-spacer {
+    .keymapStaggerSplitSpacer {
       display: none;
     }
-    .keymap-matrix-split-spacer {
+    .keymapMatrixSplitSpacer {
       display: block;
       width: 2rem;
       height: 2rem;
     }
     .r1,
     .r2,
-    .r3 {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    }
-
+    .r3,
     .r4 {
-      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
     }
 
     .r5 {
-      grid-template-columns: 2fr 3fr 1fr 3fr 2fr;
+      grid-template-columns: 1fr 2fr 3fr 1fr 3fr 2fr 1fr;
+
+      &[data-row5-has-alpha="true"] {
+        // space-alpha
+        &[data-row5-grid="3-1"] {
+          grid-template-columns: 2fr 1fr 3fr 1fr 1fr 2fr 3fr;
+        }
+
+        // alpha-space
+        &[data-row5-grid="1-3"] {
+          grid-template-columns: 4fr 1fr 1fr 1fr 3fr 1fr 2fr;
+        }
+      }
     }
-    .key-split-space {
+    .keySpace.right {
       opacity: 1;
     }
-
-    .r1 {
-      :nth-child(12) {
-        opacity: 0;
-      }
-    }
-
-    .r1,
+  }
+  &.steno,
+  &.steno_matrix {
     .r2,
     .r3 {
-      :nth-child(13) {
-        opacity: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    }
+    .r4 {
+      display: grid;
+      grid-template-columns: 3.25fr 1fr 1fr 1fr 1fr 1fr 3.25fr;
+    }
+    &.steno {
+      .r2,
+      .r3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
       }
-
-      :nth-child(14) {
-        opacity: 0;
+      .r4 {
+        display: grid;
+        grid-template-columns: 2.6fr 1fr 1fr 0.1fr 1fr 1fr 3.65fr;
+        .keymapSplitSpacer {
+          display: block;
+        }
+      }
+      .r2 .keymapKey:nth-child(1),
+      .r2 .keymapKey:nth-child(5) {
+        height: 4.25rem;
+      }
+      .r3 .keymapKey:nth-child(1),
+      .r3 .keymapKey:nth-child(5) {
+        visibility: hidden;
+      }
+    }
+    &.steno_matrix {
+      .keymapSplitSpacer {
+        display: block;
       }
     }
   }
   &.alice {
-    .keymap-split-spacer {
+    .keymapSplitSpacer {
       display: block;
     }
-    .r4 .keymap-split-spacer {
+    .r4 .keymapSplitSpacer {
       display: none;
     }
-    .keymap-stagger-split-spacer {
+    .keymapStaggerSplitSpacer {
       display: block;
     }
 
     .r1 {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.5fr;
-      .keymap-key:nth-child(2) {
+      .keymapKey:nth-child(2) {
         //1
         margin-left: 45%;
       }
-      .keymap-key:nth-child(3) {
+      .keymapKey:nth-child(3) {
         //2
         margin-top: -2px;
         margin-left: 45%;
       }
-      .keymap-key:nth-child(4),
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(6),
-      .keymap-key:nth-child(7) {
+      .keymapKey:nth-child(4),
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(6),
+      .keymapKey:nth-child(7) {
         //3456
         transform: rotate(10deg);
         margin-left: 45%;
       }
-      .keymap-key:nth-child(4) {
+      .keymapKey:nth-child(4) {
         //3
         margin-top: 3px;
       }
-      .keymap-key:nth-child(5) {
+      .keymapKey:nth-child(5) {
         //4
         margin-top: 10px;
       }
-      .keymap-key:nth-child(6) {
+      .keymapKey:nth-child(6) {
         //5
         margin-top: 17px;
       }
-      .keymap-key:nth-child(7) {
+      .keymapKey:nth-child(7) {
         //6
         margin-top: 24px;
       }
-      .keymap-key:nth-child(9),
-      .keymap-key:nth-child(10),
-      .keymap-key:nth-child(11),
-      .keymap-key:nth-child(12) {
+      .keymapKey:nth-child(9),
+      .keymapKey:nth-child(10),
+      .keymapKey:nth-child(11),
+      .keymapKey:nth-child(12) {
         //7890
         transform: rotate(-10deg);
         margin-left: -48%;
       }
-      .keymap-key:nth-child(12) {
+      .keymapKey:nth-child(12) {
         //7
         margin-top: -1px;
       }
-      .keymap-key:nth-child(11) {
+      .keymapKey:nth-child(11) {
         //8
         margin-top: 6px;
       }
-      .keymap-key:nth-child(10) {
+      .keymapKey:nth-child(10) {
         //9
         margin-top: 13px;
       }
-      .keymap-key:nth-child(9) {
+      .keymapKey:nth-child(9) {
         //10
         margin-top: 20px;
       }
-      .keymap-key:nth-child(13),
-      .keymap-key:nth-child(14) {
+      .keymapKey:nth-child(13),
+      .keymapKey:nth-child(14) {
         //-=
         margin-left: -40%;
       }
@@ -300,38 +359,38 @@
     .r2 {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-      .keymap-key:nth-child(2) {
+      .keymapKey:nth-child(2) {
         //Q
         margin-left: 20%;
       }
-      .keymap-key:nth-child(3),
-      .keymap-key:nth-child(4),
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(6) {
+      .keymapKey:nth-child(3),
+      .keymapKey:nth-child(4),
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(6) {
         //WERT
         transform: rotate(10deg);
         margin-left: 45%;
       }
-      .keymap-key:nth-child(4),
-      .keymap-key:nth-child(10) {
+      .keymapKey:nth-child(4),
+      .keymapKey:nth-child(10) {
         //EI
         margin-top: 8px;
       }
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(9) {
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(9) {
         //RU
         margin-top: 15px;
       }
-      .keymap-key:nth-child(6),
-      .keymap-key:nth-child(8) {
+      .keymapKey:nth-child(6),
+      .keymapKey:nth-child(8) {
         //TY
         margin-top: 22px;
       }
 
-      .keymap-key:nth-child(8),
-      .keymap-key:nth-child(9),
-      .keymap-key:nth-child(10),
-      .keymap-key:nth-child(11) {
+      .keymapKey:nth-child(8),
+      .keymapKey:nth-child(9),
+      .keymapKey:nth-child(10),
+      .keymapKey:nth-child(11) {
         //YUIO
         transform: rotate(-10deg);
         margin-left: -12%;
@@ -341,38 +400,38 @@
     .r3 {
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1.5fr;
-      .keymap-key:nth-child(2) {
+      .keymapKey:nth-child(2) {
         //A
         margin-left: -5px;
       }
-      .keymap-key:nth-child(3),
-      .keymap-key:nth-child(4),
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(6) {
+      .keymapKey:nth-child(3),
+      .keymapKey:nth-child(4),
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(6) {
         //SDFG
         margin-left: -1px;
         transform: rotate(10deg);
       }
-      .keymap-key:nth-child(4),
-      .keymap-key:nth-child(10) {
+      .keymapKey:nth-child(4),
+      .keymapKey:nth-child(10) {
         //DK
         margin-top: 8px;
       }
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(9) {
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(9) {
         //FJ
         margin-top: 15px;
       }
-      .keymap-key:nth-child(6),
-      .keymap-key:nth-child(8) {
+      .keymapKey:nth-child(6),
+      .keymapKey:nth-child(8) {
         //GH
         margin-top: 22px;
       }
 
-      .keymap-key:nth-child(8),
-      .keymap-key:nth-child(9),
-      .keymap-key:nth-child(10),
-      .keymap-key:nth-child(11) {
+      .keymapKey:nth-child(8),
+      .keymapKey:nth-child(9),
+      .keymapKey:nth-child(10),
+      .keymapKey:nth-child(11) {
         //HJKL
         transform: rotate(-10deg);
         margin-left: -25%;
@@ -382,45 +441,45 @@
     .r4 {
       display: grid;
       grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 2fr;
-      .keymap-key:nth-child(2) {
+      .keymapKey:nth-child(2) {
         margin-left: -18px;
       }
-      .keymap-key:nth-child(3) {
+      .keymapKey:nth-child(3) {
         //Z
         margin-left: -15px;
       }
-      .keymap-key:nth-child(4),
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(6),
-      .keymap-key:nth-child(7) {
+      .keymapKey:nth-child(4),
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(6),
+      .keymapKey:nth-child(7) {
         //XCVB
         margin-left: -11px;
         transform: rotate(10deg);
         margin-top: 2px;
       }
-      .keymap-key:nth-child(12) {
+      .keymapKey:nth-child(12) {
         //,
         margin-top: 4px;
         margin-left: -5px;
       }
-      .keymap-key:nth-child(5),
-      .keymap-key:nth-child(11) {
+      .keymapKey:nth-child(5),
+      .keymapKey:nth-child(11) {
         //CM
         margin-top: 10px;
       }
-      .keymap-key:nth-child(6),
-      .keymap-key:nth-child(10) {
+      .keymapKey:nth-child(6),
+      .keymapKey:nth-child(10) {
         //VN
         margin-top: 18px;
       }
-      .keymap-key:nth-child(7) {
+      .keymapKey:nth-child(7) {
         //B
         margin-top: 24px;
       }
 
-      .keymap-key:nth-child(10),
-      .keymap-key:nth-child(11),
-      .keymap-key:nth-child(12) {
+      .keymapKey:nth-child(10),
+      .keymapKey:nth-child(11),
+      .keymapKey:nth-child(12) {
         //NM,
         transform: rotate(-10deg);
         margin-left: -25%;
@@ -428,116 +487,55 @@
     }
     .r5 {
       grid-template-columns: 5fr 3fr 1fr 3fr 4.5fr;
-    }
-    .key-split-space {
-      opacity: 1;
-    }
 
-    // div#KeyE.keymap-key,
-    // div#KeyD.keymap-key {
-    //   margin-top: 6px;
-    // }
-    // div#KeyC.keymap-key {
-    //   margin-top: 8px;
-    // }
-    // div#KeyR.keymap-key,
-    // div#KeyF.keymap-key {
-    //   margin-top: 12px;
-    // }
-    // div#KeyV.keymap-key {
-    //   margin-top: 14px;
-    // }
-    // div#KeyT.keymap-key,
-    // div#KeyG.keymap-key {
-    //   margin-top: 18px;
-    // }
-    // div#KeyB.keymap-key {
-    //   margin-top: 20px;
-    // }
-    // div#KeyY.keymap-key,
-    // div#KeyU.keymap-key,
-    // div#KeyI.keymap-key,
-    // div#KeyO.keymap-key {
-    //   transform: rotate(-10deg);
-    //   margin-left: -25%;
-    // }
-    // div#KeyH.keymap-key,
-    // div#KeyJ.keymap-key,
-    // div#KeyK.keymap-key,
-    // div#KeyL.keymap-key {
-    //   transform: rotate(-10deg);
-    //   margin-left: -35%;
-    // }
-    // div#KeyN.keymap-key,
-    // div#KeyM.keymap-key,
-    // div#KeyComma.keymap-key {
-    //   transform: rotate(-10deg);
-    //   margin-left: -16%;
-    // }
-    // div#KeyP.keymap-key,
-    // div#KeyLeftBracket.keymap-key,
-    // div#KeyRightBracket.keymap-key {
-    //   margin-left: 5%;
-    // }
-    // div#KeySemicolon.keymap-key,
-    // div#KeyQuote.keymap-key {
-    //   margin-left: -25%;
-    // }
-    // div#KeyPeriod.keymap-key,
-    // div#KeySlash.keymap-key {
-    //   margin-left: -3px;
-    // }
-    // div#KeyO.keymap-key,
-    // div#KeyComma.keymap-key {
-    //   margin-top: 3px;
-    // }
-    // div#KeyL.keymap-key {
-    //   margin-top: 1px;
-    // }
-    // div#KeyI.keymap-key,
-    // div#KeyM.keymap-key {
-    //   margin-top: 9px;
-    // }
-    // div#KeyK.keymap-key {
-    //   margin-top: 7px;
-    // }
-    // div#KeyU.keymap-key,
-    // div#KeyN.keymap-key {
-    //   margin-top: 15px;
-    // }
-    // div#KeyJ.keymap-key {
-    //   margin-top: 13px;
-    // }
-    // div#KeyY.keymap-key {
-    //   margin-top: 21px;
-    // }
-    // div#KeyH.keymap-key {
-    //   margin-top: 19px;
-    // }
-    div.key-space {
-      transform: rotate(10deg);
-      margin-left: -5%;
-      margin-top: 21%;
+      // rotation/position of r5 keys moved under .r5 styles
+      // and made generic to left/right to account for alphas
+      div.keymapKey.left {
+        transform: rotate(10deg);
+        margin-left: -5%;
+        margin-top: 21%;
+      }
+      div.keymapKey.right {
+        opacity: 1;
+        transform: rotate(-10deg);
+        margin-left: -33%;
+        margin-top: 20%;
+      }
+
+      &[data-row5-has-alpha="true"] {
+        // space-alpha
+        &[data-row5-grid="3-1"] {
+          grid-template-columns: 5fr 3fr 1fr 3fr 4.5fr;
+
+          div.keymapKey.right {
+            margin-left: -30%;
+            margin-top: 25%;
+          }
+        }
+
+        // alpha-space
+        &[data-row5-grid="1-3"] {
+          grid-template-columns: 5fr 3fr 1fr 3fr 4.5fr;
+
+          div.keymapKey.left {
+            margin-left: 50%;
+            margin-top: 25%;
+          }
+        }
+      }
     }
-    div.key-split-space {
-      transform: rotate(-10deg);
-      margin-left: -33%;
-      margin-top: 20%;
-    }
-    div#KeyBackslash.keymap-key {
+    div#KeyBackslash.keymapKey {
       visibility: hidden;
     }
 
-    div.extra-key {
+    div.extraKey {
       margin-top: 25px;
       transform: rotate(-10deg) !important;
       margin-left: -7px !important;
       display: flex;
-      background-color: transparent;
+      background-color: var(--sub-alt-color);
       color: var(--sub-color);
       border-radius: var(--roundness);
-      border: 0.05rem solid;
-      border-color: var(--sub-color);
       text-align: center;
       justify-content: center;
       align-items: center;
@@ -545,13 +543,5 @@
       height: 2rem;
       position: relative;
     }
-    // div#KeySpace.keymap-key:after {
-    //     content: 'Alice';
-    //     text-indent: 0;
-    //     font-weight: 600!important;
-    //     margin: auto;
-    //     font-size: 0.9rem;
-    //     color: var(--bg-color)
-    // }
   }
 }

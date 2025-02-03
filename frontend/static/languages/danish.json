@@ -1,6 +1,5 @@
 {
   "name": "danish",
-  "leftToRight": true,
   "bcp47": "da-DK",
   "words": [
     "ville",
@@ -11,8 +10,6 @@
     "giver",
     "komme",
     "nok",
-    "Danmark",
-    "København",
     "i",
     "kun",
     "min",
@@ -46,7 +43,6 @@
     "alle",
     "ved",
     "dem",
-    "nok",
     "fået",
     "gør",
     "give",

@@ -3,6 +3,7 @@
   --main-color: #eee;
   --caret-color: #eee;
   --sub-color: #444;
+  --sub-alt-color: #1a1a1a;
   --text-color: #eee;
   --error-color: #eee;
   --error-extra-color: #b3b3b3;
@@ -84,34 +85,31 @@
   animation: rgb-bg 5s linear infinite !important;
 }
 
-#top.focus .button.discord::after,
-#top .button.discord.dotHidden::after {
+header.focus .button.discord::after,
+header .button.discord.dotHidden::after {
   animation-name: none !important;
 }
 
-.logo .bottom,
-#top .config .group .buttons .text-button.active,
+#logo .bottom,
+header .config .group .buttons .textButton.active,
 #result .stats .group .bottom,
-#menu .icon-button:hover,
-#top .config .group .buttons .text-button:hover,
-a:hover,
+nav .textButton:hover,
+nav button.text:hover,
+header .config .group .buttons .textButton:hover,
+a:not(.button):hover,
 #words.flipped .word {
   animation: rgb 5s linear infinite;
 }
 
-/* .word letter.correct{
-  animation: rgb 5s linear infinite;
-
-}  */
-
-#words.flipped .word letter.correct {
-  color: var(--sub-color);
+#words {
+  --correct-letter-animation: rgb 5s linear infinite;
 }
 
-#words:not(.flipped) .word letter.correct {
-  animation: rgb 5s linear infinite;
+#words.flipped {
+  --correct-letter-animation: none;
+  --untyped-letter-animation: rgb 5s linear infinite;
 }
 
-#top .logo path {
+header #logo path {
   animation: rgb-fill 5s linear infinite;
 }

@@ -1,6 +1,5 @@
 {
   "name": "twitch_emotes",
-  "leftToRight": true,
   "noLazyMode": true,
   "words": [
     "HeyGuys",
@@ -13,7 +12,6 @@
     "Kappa",
     "BibleThump",
     "KappaClaus",
-    "Squid1",
     "Squid1",
     "Squid3",
     "Squid4",
@@ -31,8 +29,6 @@
     "CorgiDerp",
     "DarkMode",
     "DoritosChip",
-    "DoritosChip",
-    "ExtraLife",
     "ExtraLife",
     "GivePLZ",
     "GreenTeam",
@@ -65,7 +61,6 @@
     "StinkyGlitch",
     "TBAngel",
     "TPcrunchyroll",
-    "TakeNRG",
     "TakeNRG",
     "VoHiYo",
     "VoteNay",

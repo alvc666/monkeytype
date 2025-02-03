@@ -1,28 +1,121 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Code&family=IBM+Plex+Sans:wght@600&family=Inconsolata&family=Roboto+Mono&family=Source+Code+Pro&family=JetBrains+Mono&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Oxygen&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Nunito&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Itim&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Comfortaa&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Coming+Soon&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Lalezar&display=swap");
-@import url("https://fonts.googleapis.com/css?family=Noto+Naskh+Arabic&display=swap");
-
 :root {
   --roundness: 0.5rem;
-  --font: "Roboto Mono";
+  --font: "Roboto Mono", "Vazirmatn", monospace;
   // scroll-behavior: smooth;
   scroll-padding-top: 2rem;
+  font-weight: 400;
+  --crt-bg-color-shine: color-mix(
+    in oklab,
+    var(--main-color) 5%,
+    var(--bg-color)
+  );
+  --crt-bg-color-stripe: color-mix(in oklab, black 50%, var(--bg-color));
+  --crt-sub-color-glow: color-mix(in srgb, var(--sub-color) 20%, transparent);
+  --crt-sub-alt-color-glow: color-mix(
+    in srgb,
+    var(--sub-alt-color) 20%,
+    transparent
+  );
+  --crt-text-color-glow: color-mix(in srgb, var(--text-color) 20%, transparent);
+  --crt-main-color-glow: color-mix(in srgb, var(--main-color) 20%, transparent);
+  --crt-error-color-glow: color-mix(
+    in srgb,
+    var(--error-color) 20%,
+    transparent
+  );
+  --crt-caret-color-glow: color-mix(
+    in srgb,
+    var(--caret-color) 20%,
+    transparent
+  );
+
+  --balloon-font-size: 1rem;
+  --balloon-border-radius: calc(var(--roundness) / 2);
 }
 
 ::placeholder {
   color: var(--sub-color);
   opacity: 1;
   /* Firefox */
+}
+
+::selection {
+  background-color: var(--main-color);
+  color: var(--sub-alt-color);
+}
+
+#app {
+  min-height: 100vh;
+  grid-template-rows: [top-start] auto [content-start] 1fr [content-end] auto [top-end];
+  overflow: hidden;
+  row-gap: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  width: 100%;
+}
+
+// from an amazing guide by Kevin Powell https://www.youtube.com/watch?v=c13gpBrnGEw
+.content-grid {
+  --padding-inline: 2rem;
+  --content-max-width: 1536px;
+
+  // --breakout-max-width: 1200px;
+
+  // --breakout-size: calc(
+  //   (var(--breakout-max-width) - var(--content-max-width)) / 2
+  // );
+
+  justify-content: center;
+  display: grid;
+  grid-template-columns:
+    [full-width-start] minmax(0, var(--padding-inline))
+    [full-width-padding-start] minmax(0, 1fr)
+    // [breakout-start] minmax(0, var(--breakout-size))
+    [content-start] min(
+      100% - (var(--padding-inline) * 2),
+      var(--content-max-width)
+    )
+    [content-end]
+    // minmax(0, var(--breakout-size)) [breakout-end]
+    minmax(0, 1fr) [full-width-padding-end]
+    minmax(0, var(--padding-inline)) [full-width-end];
+}
+
+.content-grid > :not(.breakout, .full-width, .full-width-padding) {
+  grid-column: content;
+}
+
+// #app > .breakout {
+//   grid-column: breakout;
+// }
+
+.content-grid > .full-width {
+  grid-column: full-width;
+}
+
+.content-grid > .full-width-padding {
+  grid-column: full-width-padding;
+}
+
+#ad-vertical-left-wrapper,
+#ad-vertical-right-wrapper {
+  grid-row: content;
+  margin-right: 2rem;
+  position: fixed;
+}
+
+#ad-vertical-left-wrapper {
+  grid-column: full-width-start/content-start;
+  left: 0;
+}
+
+#ad-vertical-right-wrapper {
+  grid-column: content-end/full-width-end;
+  right: -2rem;
+}
+
+main {
+  display: grid; //stupid fix for stupid safari
 }
 
 #nocss {
@@ -38,15 +131,26 @@
 html {
   @extend .ffscroll;
   overflow-y: scroll;
+  scroll-behavior: smooth;
+  line-height: 1.25;
 }
 
 a {
   display: inline-block;
   color: var(--sub-color);
-  transition: 0.25s;
+  transition: color 0.125s, opacity 0.125s, background 0.125s;
   &:hover {
     color: var(--text-color);
   }
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 0.1rem var(--bg-color), 0 0 0 0.2rem var(--text-color);
+    border-radius: calc(var(--roundness) / 2);
+  }
+}
+
+a[router-link] * {
+  pointer-events: none;
 }
 
 body {
@@ -83,74 +187,12 @@ body {
   z-index: 9999;
 }
 
-label.checkbox {
-  span {
-    display: block;
-    font-size: 0.76rem;
-    color: var(--sub-color);
-    margin-left: 1.5rem;
-  }
-
-  input {
-    margin: 0 !important;
-    cursor: pointer;
-    width: 0;
-    height: 0;
-    display: none;
-
-    & ~ .customTextCheckbox {
-      width: 12px;
-      height: 12px;
-      background: rgba(0, 0, 0, 0.1);
-      border-radius: 2px;
-      box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
-      display: inline-block;
-      margin: 0 0.5rem 0 0.25rem;
-      transition: 0.25s;
-    }
-
-    &:checked ~ .customTextCheckbox {
-      background: var(--main-color);
-    }
-  }
-}
-
-#centerContent {
-  max-width: 1000px;
-  // min-width: 500px;
-  // margin: 0 auto;
-  display: grid;
-  grid-auto-flow: row;
-  min-height: 100vh;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  gap: 2rem;
-  align-items: center;
-  z-index: 999;
-  grid-template-rows: auto 1fr auto;
-  width: 100%;
-  &.wide125 {
-    max-width: 1250px;
-  }
-  &.wide150 {
-    max-width: 1500px;
-  }
-  &.wide200 {
-    max-width: 2000px;
-  }
-  &.widemax {
-    max-width: unset;
-  }
-}
-
 key {
   color: var(--bg-color);
   background-color: var(--sub-color);
   /* font-weight: bold; */
   padding: 0.1rem 0.3rem;
-  margin: 3px 0;
+  margin: 0rem 0rem;
   border-radius: 0.1rem;
   display: inline-block;
   font-size: 0.7rem;
@@ -158,8 +200,9 @@ key {
 }
 
 .pageLoading {
+  height: 100%;
   display: grid;
-  justify-content: center;
+  align-items: center;
 }
 
 .pageLoading,
@@ -169,6 +212,7 @@ key {
     justify-self: center;
     display: grid;
     .barWrapper {
+      justify-content: center;
       display: grid;
       gap: 1rem;
       grid-row: 1;
@@ -176,7 +220,7 @@ key {
       .bar {
         width: 20rem;
         height: 0.5rem;
-        background: rgba(0, 0, 0, 0.1);
+        background: var(--sub-alt-color);
         border-radius: var(--roundness);
         .fill {
           height: 100%;
@@ -236,118 +280,11 @@ key {
 .invisible {
   opacity: 0 !important;
   pointer-events: none !important;
-}
-
-.button {
-  color: var(--text-color);
-  cursor: pointer;
-  transition: 0.25s;
-  padding: 0.4rem;
-  border-radius: var(--roundness);
-  background: rgba(0, 0, 0, 0.1);
-  text-align: center;
-  user-select: none;
-  -webkit-user-select: none;
-  // display: grid;
-  align-content: center;
-  height: min-content;
-  height: -moz-min-content;
-  line-height: 1rem;
-
-  &:hover {
-    color: var(--bg-color);
-    background: var(--text-color);
-    outline: none;
-  }
-  &:focus {
-    color: var(--main-color);
-    background: var(--sub-color);
-    outline: none;
-  }
-
-  &.active {
-    background: var(--main-color);
-    color: var(--bg-color);
-    &:hover {
-      // color: var(--text-color);
-      background: var(--text-color);
-      outline: none;
-    }
-    &:focus {
-      color: var(--bg-color);
-      background: var(--main-color);
-      outline: none;
-    }
-  }
-
-  &.disabled {
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
-    &:hover {
-      color: var(--text-color);
-      background: rgba(0, 0, 0, 0.1);
-      outline: none;
-    }
-  }
-
-  &.disabled.active {
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
-    &:hover {
-      color: var(--bg-color);
-      background: var(--main-color);
-      outline: none;
-    }
-  }
-}
-
-.text-button {
-  transition: 0.25s;
-  color: var(--sub-color);
-  cursor: pointer;
-  margin-right: 0.25rem;
-  cursor: pointer;
-  outline: none;
-
-  &.active {
-    color: var(--main-color);
-  }
-
-  &:hover,
-  &:focus {
-    color: var(--text-color);
-  }
-}
-
-.icon-button {
-  display: grid;
-  grid-auto-flow: column;
-  align-content: center;
-  transition: 0.25s;
-  padding: 0.5rem;
-  border-radius: var(--roundness);
-  cursor: pointer;
-
-  &:hover {
-    color: var(--text-color);
-  }
-  &:focus {
-    // background: var(--sub-color);
-    color: var(--sub-color);
-    border: none;
-    outline: none;
-  }
-  &.disabled {
-    opacity: 0.5;
-    cursor: default;
-    pointer-events: none;
-  }
+  visibility: hidden !important;
 }
 
 .scrollToTopButton {
-  bottom: 2rem;
+  bottom: 4rem;
   right: 2rem;
   position: fixed;
   font-size: 2rem;
@@ -355,13 +292,139 @@ key {
   height: 4rem;
   text-align: center;
   line-height: 4rem;
-  background: var(--bg-color);
+  background: var(--sub-alt-color);
   border-radius: 99rem;
   z-index: 99;
   cursor: pointer;
   color: var(--sub-color);
   transition: 0.25s;
   &:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+  }
+}
+
+.inputAndIndicator {
+  input {
+    width: 100%;
+  }
+  position: relative;
+  .statusIndicator {
+    width: 2.25em;
+    height: 2.25em;
+    position: absolute;
+    right: 0;
+    top: 0;
+    /* background: red; */
+    display: grid;
+    grid-template-columns: 2.25em;
+    grid-template-rows: 2.25em;
+    place-items: center center;
+    cursor: pointer;
+
+    .indicator {
+      grid-column: 1/2;
+      grid-row: 1/2;
+      &.level-1 {
+        color: var(--error-color);
+      }
+      &.level0 {
+        color: var(--sub-color);
+      }
+      &.level1 {
+        color: var(--main-color);
+      }
+    }
+  }
+}
+
+#devButtons {
+  position: fixed;
+  left: 0;
+  top: 10rem;
+  display: grid;
+  grid-auto-flow: row;
+  gap: 0.5rem;
+  text-decoration: none;
+  z-index: 999999999;
+  border-radius: 0 1rem 1rem 0;
+
+  .button {
+    padding: 1rem;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.avatar {
+  transition: opacity 0.125s, filter 0.125s, webkit-filter 0.125s;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 100%;
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.badge {
+  background: var(--sub-color);
+  color: var(--text-color);
+  border-radius: calc(var(--roundness) / 2);
+  // padding: 0.15em 0.5em;
+  -webkit-user-select: none;
+  user-select: none;
+  display: grid;
+  grid-template-columns: max-content auto;
+  align-items: baseline;
+  .fas,
+  .far {
+    margin-right: 0.3rem;
+    margin-left: 0.3rem;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    font-size: 0.9em;
+  }
+  .text {
+    margin-right: 0.3rem;
+  }
+}
+
+.notificationBubble {
+  position: absolute;
+  background: var(--main-color);
+  width: 1em;
+  height: 1em;
+  font-size: 0.5em;
+  line-height: 2em;
+  color: transparent;
+  border-radius: 100rem;
+  right: 0.5em;
+  top: 0.5em;
+  box-shadow: 0 0 0 0.5em var(--bg-color);
+  transition: 0.125s;
+}
+
+#fpsCounter {
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: var(--sub-alt-color);
+  color: rgb(255, 217, 0);
+  padding: 0.25rem;
+  width: 10ch;
+  text-align: center;
+  z-index: 999999999;
+  &.main {
     color: var(--text-color);
   }
+  &.error {
+    color: var(--error-color);
+  }
+}
+
+// mouseover texts
+[aria-label][data-balloon-pos]:after {
+  font-family: var(--font);
+  font-size: var(--balloon-font-size);
+  line-height: var(--balloon-font-size);
 }

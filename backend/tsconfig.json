@@ -1,17 +1,22 @@
 {
+  "extends": "@monkeytype/typescript-config/base.json",
   "compilerOptions": {
-    "incremental": true,
-    "module": "commonjs",
-    "target": "es6",
-    "sourceMap": false,
-    "allowJs": true,
-    "checkJs": true,
-    "outDir": "build",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "strictNullChecks": true
+    "outDir": "dist",
+    "target": "ES6",
+    "noImplicitAny": false,
+    "strictFunctionTypes": false,
+    "useUnknownInCatchVariables": false,
+    "strictPropertyInitialization": false
   },
-  "exclude": ["node_modules", "build", "worker.js"]
+  "ts-node": {
+    "files": true
+  },
+  "include": ["src"],
+  "exclude": [
+    "node_modules",
+    "build",
+    "worker.js",
+    "setup-tests.ts",
+    "**/*.spec.ts"
+  ]
 }

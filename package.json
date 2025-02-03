@@ -1,45 +1,84 @@
 {
   "name": "monkeytype",
-  "version": "1.5.6",
   "license": "GPL-3.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "start:dev": "concurrently --kill-others \"cd ./frontend && npm run start:dev\" \"cd ./backend && npm run start:dev\"",
-    "start:dev:be": "cd backend && npm run start:dev",
-    "start:dev:fe": "cd frontend && npm run start:dev",
-    "deploy:live": "cd frontend && npm run deploy:live",
-    "install:all": "sh ./bin/install.sh",
-    "install:windows": ".\\bin\\install.cmd",
-    "lint": "eslint \"./backend/**/*.{ts,js}\" \"./frontend/src/scripts/**/*.{ts,js}\"",
-    "build:live": "cd ./frontend && npm run build:live",
-    "pretty": "prettier --check './backend/**/*.js' './frontend/src/**/*.{js,scss}' './frontend/static/**/*.{json,html}'",
-    "pr-check-lint-json": "cd frontend && npx gulp pr-check-lint-json",
+    "preinstall": "npx only-allow pnpm",
+    "full-check": "turbo lint ts-check build test validate-json",
+    "prepare": "husky install",
+    "pre-commit": "lint-staged",
+    "ts-check": "turbo run ts-check",
+    "lint": "turbo run lint",
+    "lint-be": "turbo run lint --filter @monkeytype/backend",
+    "lint-fe": "turbo run lint --filter @monkeytype/frontend",
+    "lint-pkg": "turbo run lint --filter=\"./packages/*\"",
+    "build": "turbo run build",
+    "build-be": "turbo run build --filter @monkeytype/backend",
+    "build-fe": "turbo run build --filter @monkeytype/frontend",
+    "build-pkg": "turbo run build --filter=\"./packages/*\"",
+    "test": "turbo run test",
+    "test-be": "turbo run test --filter @monkeytype/backend",
+    "test-fe": "turbo run test --filter @monkeytype/frontend",
+    "test-pkg": "turbo run test --filter=\"./packages/*\"",
+    "dev": "turbo run dev --force",
+    "dev-be": "turbo run dev --force --filter @monkeytype/backend",
+    "dev-fe": "turbo run dev --force --filter @monkeytype/frontend",
+    "dev-pkg": "turbo run dev --force --filter=\"./packages/*\"",
+    "start": "turbo run start",
+    "start-be": "turbo run start --filter @monkeytype/backend",
+    "start-fe": "turbo run start --filter @monkeytype/frontend",
+    "docker": "cd backend && docker compose up",
+    "audit-fe": "cd frontend && npm run audit",
+    "release": "monkeytype-release",
+    "release-fe": "monkeytype-release --fe",
+    "release-be": "monkeytype-release --be",
+    "release-no-deploy": "monkeytype-release --no-deploy",
+    "release-dry": "monkeytype-release --dry",
+    "hotfix-fe": "npm run build-fe && cd frontend && npm run deploy-live && monkeytype-purge",
+    "hotfix-be": "monkeytype-deploy-be",
+    "hotfix": "npm run hotfix-be && npm run hotfix-fe",
+    "pretty-check": "prettier --check .",
+    "pretty-check-be": "prettier --check ./backend",
+    "pretty-check-fe": "prettier --check ./frontend/src",
+    "pretty-check-assets": "prettier --check ./frontend/static",
+    "pretty-check-pkg": "prettier --check ./packages",
+    "pretty-fix": "prettier --write .",
+    "pretty-fix-be": "prettier --write ./backend",
+    "pretty-fix-fe": "prettier --write ./frontend/src",
+    "pretty-fix-assets": "prettier --write ./frontend/static",
+    "pretty-fix-pkg": "prettier --write ./packages",
+    "pr-check-lint-json": "cd frontend && eslint './static/**/*.json'",
     "pr-check-quote-json": "cd frontend && npx gulp pr-check-quote-json",
     "pr-check-language-json": "cd frontend && npx gulp pr-check-language-json",
-    "pr-check-other-json": "cd frontend && npx gulp pr-check-other-json",
-    "pr-check-scss": "cd frontend && npx gulp pr-check-scss",
-    "pr-check-ts": "cd frontend && npx gulp pr-check-ts",
-    "pr-check-build-be": "cd backend && npm run build"
+    "pr-check-other-json": "cd frontend && npx gulp pr-check-other-json"
   },
   "engines": {
-    "npm": "8.1.2"
+    "node": "20.16.0"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.11.0",
-    "@typescript-eslint/parser": "^5.11.0",
-    "concurrently": "5.3.0",
-    "eslint": "8.8.0",
-    "eslint-plugin-json": "2.1.2",
-    "eslint-plugin-require-path-exists": "1.1.9",
-    "husky": "4.3.0",
-    "jsonschema": "1.4.0",
-    "prettier": "2.5.1",
-    "pretty-quick": "3.1.0",
-    "typescript": "4.5.5"
+    "@commitlint/cli": "17.7.1",
+    "@commitlint/config-conventional": "19.2.2",
+    "@monkeytype/release": "workspace:*",
+    "@vitest/coverage-v8": "2.0.5",
+    "conventional-changelog": "6.0.0",
+    "husky": "8.0.1",
+    "knip": "2.19.2",
+    "lint-staged": "13.2.3",
+    "only-allow": "1.2.1",
+    "prettier": "2.8.8",
+    "turbo": "2.3.3",
+    "vitest": "2.0.5"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged && npm run lint"
-    }
-  }
+  "lint-staged": {
+    "*.{json,scss,css,html}": [
+      "prettier --write"
+    ],
+    "*.{ts,js}": [
+      "prettier --write",
+      "eslint"
+    ]
+  },
+  "version": "25.6.0",
+  "packageManager": "pnpm@9.6.0"
 }

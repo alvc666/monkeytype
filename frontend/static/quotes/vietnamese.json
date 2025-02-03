@@ -188,8 +188,8 @@
       "id": 30
     },
     {
-      "text": "Đôi mắt biếc ngày nào, khi dõi theo những cánh chuồn chuồn đang ngẩn ngơ bay trên hàng giậu đổ, em có chạnh lòng tiếc nuối tuổi thơ qua?",
-      "source": "Mắc biếc, Nguyễn Nhật Ánh",
+      "text": "Đôi Mắt biếc ngày nào, khi dõi theo những cánh chuồn chuồn đang ngẩn ngơ bay trên hàng giậu đổ, em có chạnh lòng tiếc nuối tuổi thơ qua?",
+      "source": "Mắt biếc, Nguyễn Nhật Ánh",
       "length": 136,
       "id": 31
     },
@@ -231,13 +231,13 @@
     },
     {
       "text": "Cuộc đời đã thực sự đổi thay. Có những đổi thay sâu sắc, những đổi thay mang màu sắc số phận mà thoạt nhìn không dễ nhận ra.",
-      "source": "Mắc biếc, Nguyễn Nhật Ánh",
+      "source": "Mắt biếc, Nguyễn Nhật Ánh",
       "length": 124,
       "id": 38
     },
     {
       "text": "Bà ngoại nói, có hai điều không thể bỏ lỡ trong cuộc sống. Đó là những chuyến xe cuối cùng và những người yêu ta thật lòng.",
-      "source": "Măc biếc, Nguyễn Nhật Ánh",
+      "source": "Mắt biếc, Nguyễn Nhật Ánh",
       "length": 123,
       "id": 39
     },
@@ -506,12 +506,6 @@
       "id": 83
     },
     {
-      "text": "Từ ngày em đến ánh nắng ấy đã xua tan màn đêm nơi chân trời; và tên em anh mãi cất giữ chỗ trái tim không rời... Dù ngày mai sóng gió bão tố níu đôi chân của anh trên đường đời; anh sẽ yêu em, sẽ yêu em mãi thôi. Dù ngày mai sóng gió bão tố níu đôi chân của anh trên đường đời; anh sẽ yêu em, sẽ yêu em mãi thôi.",
-      "source": "Từ ngày em đến, DA LAB",
-      "length": 312,
-      "id": 84
-    },
-    {
       "text": "Ai đến đây trước ai đi theo sau; ai đang bắt chước ai đua nhau? Em không đi trước em không đi sau; em đang không biết em ở đâu. Bỏ đi những thứ cũ để đến đây, và giờ em thấy cũng như vậy. Tìm chưa ra thứ mới ở nơi này, chắc là hiệu ứng trốn chạy.",
       "source": "Hiệu ứng trốn chạy, Cá Hồi Hoang",
       "length": 246,
@@ -566,12 +560,6 @@
       "id": 93
     },
     {
-      "text": "Gọi tên của anh là nắng, để em được làm mây trắng; bên anh quấn quýt mãi chẳng rời. Và khi gọi anh là mưa, chẳng thể gần lại được nữa; anh mang ấm áp đi xa. Và để giờ mình em lại bơ vơ, lạc vào giấc mơ rồi lại chơi vơi; mình giữa đất trời nơi nào xa xôi. Màn đêm tối ai dẫn lối em để gần anh mãi. Và em muốn biết nơi trái tim vẫn nhớ thương âm thầm bao lâu nay sẽ mang đến cho mình ước mơ về hạnh phúc ấy; hay là nỗi xót xa? Có hay, rằng tình yêu em luôn bao la? Rồi sẽ đến một ngày anh chợt nhận ra tình ta như đóa hoa. Đợi khi nắng mai, khi đôi môi lại rạng rỡ, tình ta chẳng phai nhòa.",
-      "source": "Tình yêu màu nắng, Đoàn Thúy Trang ft. BigDaddy",
-      "length": 588,
-      "id": 94
-    },
-    {
       "text": "Không phải cứ có hình xăm đều là hổ báo, anh thanh niên thợ cắt tóc không hề ngổ ngáo. Không phải về nhà rất khuya đều là ăn chơi, chị phóng viên ngừng tay viết khi bóng trăng rơi. Không chịu ló mặt ra đường, không phải lười nhác - anh kiến trúc sư đang hoàn thiện ngôi nhà người khác. Không phải cứ ngáp ngắn ngáp dài là tệ nạn đâu, anh nhạc sĩ đó thường viết nhạc xuyên màn đêm thâu. Có nhiều khi mà đôi mắt mình nói sai, mình nghi ngờ mọi thứ rồi buông lời chói tai. Ngọn lửa chân thành không thể nào mà gói lại, mở lòng ra đón những tốt đẹp từ sớm mai.",
       "source": "Nếu mình gần nhau, Đen x Chi Pu x Lynk Lee",
       "length": 556,
@@ -606,6 +594,42 @@
       "source": "Ngày hôm qua đâu rồi, Bế Kiến Quốc",
       "length": 352,
       "id": 100
+    },
+    {
+      "text": "Giàu thì nó ghét, đói rét thì nó khinh, thông minh thì nó tìm cách tiêu diệt.",
+      "source": "Táo Quân",
+      "length": 77,
+      "id": 101
+    },
+    {
+      "text": "Nước trong thì không có cá, mà người tốt quá thì không ai chơi.",
+      "source": "Táo Quân",
+      "length": 63,
+      "id": 102
+    },
+    {
+      "text": "Cống rãnh mà đòi sóng sánh với đại dương, kênh mương mà đòi tương đương với thủy điện.",
+      "source": "Táo Quân",
+      "length": 86,
+      "id": 103
+    },
+    {
+      "text": "Đã làm thì không nói không, không nói khó, không nói có mà lại không làm. Chỉ bàn làm chứ không bàn lùi.",
+      "source": "Táo Quân",
+      "length": 104,
+      "id": 104
+    },
+    {
+      "text": "Ngu thì người ta khinh. Khôn thì người ta lại ghét. Khôn mà giả vờ ngu mới là khôn.",
+      "source": "Táo Quân",
+      "length": 83,
+      "id": 105
+    },
+    {
+      "text": "Trước đây, một ngày làm nhiều việc. Bây giờ, một việc làm nhiều ngày, thậm chí nhiều tháng, nhiều năm. Bí quyết sinh tồn đấy.",
+      "source": "Táo Quân",
+      "length": 125,
+      "id": 106
     }
   ]
 }

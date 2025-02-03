@@ -464,12 +464,6 @@
       "id": 76
     },
     {
-      "text": "Będziesz jeździć, dupą po nieheblowanej desce! Ostatni raz za kierownik wsiadłeś, ostatni raz!",
-      "source": "Vabank",
-      "length": 94,
-      "id": 77
-    },
-    {
       "text": "Nie będziesz dzwoniła do swoich byłych fagasów z mojej komóry, bejbe, pakuj się.",
       "source": "Chłopaki nie płaczą",
       "length": 80,
@@ -510,12 +504,6 @@
       "source": "Kogel-mogel",
       "length": 51,
       "id": 84
-    },
-    {
-      "text": "Ja tam jestem za równouprawnieniem, ale kobieta ma słuchać męża!",
-      "source": "Kogel-mogel",
-      "length": 64,
-      "id": 85
     },
     {
       "text": "To dziecko chciało mnie zabić! Jesteś taki sam jak twój ojciec!",
@@ -572,7 +560,7 @@
       "id": 94
     },
     {
-      "text": "Nie trafiłem ponad 9000 rzutów w moim życiu. Przegrałem ponad 300 meczów. 26 razu zaufano mi, gdy miałem oddać rzut na miarę zwycięstwa i spudłowałem. Przegrywałem w moim życiu ciągle. Dlatego właśnie osiągnąłem sukces.",
+      "text": "Nie trafiłem ponad 9000 rzutów w moim życiu. Przegrałem ponad 300 meczów. 26 razy zaufano mi, gdy miałem oddać rzut na miarę zwycięstwa i spudłowałem. Przegrywałem w moim życiu ciągle. Dlatego właśnie osiągnąłem sukces.",
       "source": "Michael Jordan",
       "length": 219,
       "id": 95
@@ -734,12 +722,6 @@
       "id": 121
     },
     {
-      "text": "Najpiękniejszych chwil w życiu nie zaplanujesz. One przyjdą same.",
-      "source": "Bosmans Phil",
-      "length": 65,
-      "id": 122
-    },
-    {
       "text": "Marzenia są po to, by je realizować.",
       "source": "Bosmans Phil",
       "length": 36,
@@ -776,13 +758,13 @@
       "id": 128
     },
     {
-      "text": "Wszystko jest kwestią wyobraźni. Nasz odpowiedzialność zaczyna się od wyobraźni.",
+      "text": "Wszystko jest kwestią wyobraźni. Nasza odpowiedzialność zaczyna się od wyobraźni.",
       "source": "Murakami Haruki",
-      "length": 80,
+      "length": 81,
       "id": 129
     },
     {
-      "text": "Każdy z nas ma coś wyjątkowego, co może zdobyć tylko w wyjątkowym okresie życia. Coś w rodzaju małego płomyka. Nieliczni uważni i uprzywilejowani pielęgnują ten płomień, dbają o niego, trzymają niczym pochodnie oświetlającą ich życie. Kiedy jednak ten płomień gaśnie to już na zawsze.",
+      "text": "Każdy z nas ma coś wyjątkowego, co może zdobyć tylko w wyjątkowym okresie życia. Coś w rodzaju małego płomyka. Nieliczni uważni i uprzywilejowani pielęgnują ten płomień, dbają o niego, trzymają niczym pochodnię oświetlającą ich życie. Kiedy jednak ten płomień gaśnie to już na zawsze.",
       "source": "Murakami Haruki",
       "length": 284,
       "id": 130

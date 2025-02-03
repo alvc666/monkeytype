@@ -3,9 +3,10 @@
   --main-color: #080909;
   --caret-color: #7fa480;
   --sub-color: #99947f;
+  --sub-alt-color: #d3cfc1;
   --text-color: #080909;
   --error-color: #c87e74;
-  --colorful-error-color: #a56961;
+  --error-extra-color: #a56961;
   --colorful-error-color: #c87e74;
   --colorful-error-extra-color: #a56961;
 }
@@ -15,7 +16,7 @@
 }
 
 .word letter.incorrect.extra {
-  color: var(--colorful-error-color);
+  color: var(--error-extra-color);
 }
 
 .word.error {
@@ -27,14 +28,14 @@ key {
   background-color: var(--main-color);
 }
 
-#menu .icon-button {
+nav > .textButton {
   color: var(--main-color);
 }
 
-#menu .icon-button:nth-child(1) {
+nav > .textButton:nth-child(1) {
   color: var(--error-color);
 }
 
-#menu .icon-button:nth-child(4) {
+nav > .textButton:nth-child(4) {
   color: var(--caret-color);
 }

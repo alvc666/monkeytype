@@ -1,6 +1,5 @@
 {
   "name": "polish_2k",
-  "leftToRight": true,
   "bcp47": "pl-PL",
   "words": [
     "śmiać",
@@ -2040,7 +2039,6 @@
     "Bóg",
     "wybrać",
     "zjawisko",
-    "abugida",
     "według",
     "kara",
     "czas",

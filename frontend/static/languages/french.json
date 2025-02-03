@@ -1,6 +1,5 @@
 {
   "name": "french",
-  "leftToRight": true,
   "bcp47": "fr-FR",
   "words": [
     "a",
@@ -103,7 +102,6 @@
     "maintenant",
     "mais",
     "maison",
-    "maison",
     "manière",
     "même",
     "mère",
@@ -150,7 +148,6 @@
     "si",
     "signifier",
     "soi",
-    "son",
     "son",
     "sont",
     "sous",

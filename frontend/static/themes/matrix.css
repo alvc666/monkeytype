@@ -2,8 +2,9 @@
   --bg-color: #000000;
   --main-color: #15ff00;
   --caret-color: #15ff00;
-  --sub-color: #003b00;
-  --text-color: #adffa7;
+  --sub-color: #006500;
+  --sub-alt-color: #032000;
+  --text-color: #d1ffcd;
   --error-color: #da3333;
   --error-extra-color: #791717;
   --colorful-error-color: #da3333;
@@ -11,6 +12,6 @@
 }
 
 #liveWpm,
-#timerNumber {
+#liveStatsTextTop {
   color: white;
 }
